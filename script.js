@@ -11,7 +11,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('https://test.k6.io');
+  const res = http.get('http://127.0.0.1:8000');
 
   check(res, {
     'status 200 байна': (r) => r.status === 200,
