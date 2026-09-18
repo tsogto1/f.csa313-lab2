@@ -1,4 +1,4 @@
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import time
 
 class Handler(BaseHTTPRequestHandler):
@@ -12,6 +12,6 @@ class Handler(BaseHTTPRequestHandler):
         return
 
 if __name__ == '__main__':
-    server = HTTPServer(('127.0.0.1', 8000), Handler)
-    print('Serving on http://127.0.0.1:8000')
+    server = ThreadingHTTPServer(('127.0.0.1', 8001), Handler)
+    print('Serving on http://127.0.0.1:8001')
     server.serve_forever()

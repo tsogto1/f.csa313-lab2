@@ -2,16 +2,16 @@ import http from 'k6/http';
 import { sleep, check } from 'k6';
 
 export const options = {
-  vus: 5,
+  vus: 30,
   duration: '1m',
   thresholds: {
-    http_req_duration: ['p(95)<520'],
+    http_req_duration: ['p(95)<153'],
     http_req_failed: ['rate<0.01'],
   },
 };
 
 export default function () {
-  const res = http.get('http://127.0.0.1:8000');
+  const res = http.get('http://127.0.0.1:8001');
 
   check(res, {
     'status 200 байна': (r) => r.status === 200,
